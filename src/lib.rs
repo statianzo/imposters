@@ -1,5 +1,6 @@
 #![feature(test)]
 extern crate test;
 
-pub mod search;
-pub mod vec_basic;
+mod search;
+mod tree;
+mod vec_basic;
