@@ -1,3 +1,4 @@
+#![allow(unused)]
 #[allow(unused_imports)]
 extern crate test;
 use test::Bencher;

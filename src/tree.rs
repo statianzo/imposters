@@ -1,3 +1,4 @@
+#![allow(unused)]
 #[derive(Debug)]
 struct Node<'a>(&'a str, Vec<Node<'a>>);
 
