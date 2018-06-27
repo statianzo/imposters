@@ -1,6 +1,6 @@
 [package]
 name = "imposters"
 version = "0.1.0"
-authors = ["Jason Staten <jason.staten@domo.com>"]
+authors = ["Jason Staten <jstaten07@gmail.com>"]
 
 [dependencies]
