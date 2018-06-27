@@ -1,3 +1,15 @@
-# Rust Turing Machine
+# bigo
 
-I made a turing machine when reading Impostor's Handbook
+Scratch for Impostor's Handbook Big O content
+
+## running the tests
+
+```
+cargo test
+```
+
+## running the benchmarks
+
+```
+cargo bench
+```
