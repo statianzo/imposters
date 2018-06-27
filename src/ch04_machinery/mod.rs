@@ -1,2 +1,2 @@
-mod fsm;
-mod turing;
+pub mod fsm;
+pub mod turing;

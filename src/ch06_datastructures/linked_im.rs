@@ -8,16 +8,16 @@ struct Node<T> {
     next: Link<T>,
 }
 
-struct LinkedList<T> {
+pub struct LinkedList<T> {
     head: Link<T>,
 }
 
 impl<T> LinkedList<T> {
-    fn new() -> LinkedList<T> {
+    pub fn new() -> LinkedList<T> {
         LinkedList { head: Option::None }
     }
 
-    fn append(self, el: T) -> LinkedList<T> {
+    pub fn append(self, el: T) -> LinkedList<T> {
         LinkedList {
             head: Option::Some(Rc::new(Node {
                 value: el,
@@ -26,11 +26,11 @@ impl<T> LinkedList<T> {
         }
     }
 
-    fn head(&self) -> Option<&T> {
+    pub fn head(&self) -> Option<&T> {
         self.head.as_ref().map(|node| &node.value)
     }
 
-    fn tail(&self) -> LinkedList<T> {
+    pub fn tail(&self) -> LinkedList<T> {
         LinkedList {
             head: self.head.as_ref().and_then(|node| node.next.clone()),
         }

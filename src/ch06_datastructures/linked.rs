@@ -1,15 +1,14 @@
 use std::iter::FromIterator;
 use std::mem;
 
-#[allow(unused)]
 #[derive(Debug, PartialEq)]
-enum Node<T> {
+pub enum Node<T> {
     Cons(T, Box<Node<T>>),
     Nil,
 }
 
 impl<T> Node<T> {
-    fn iter(self) -> Iter<T> {
+    pub fn iter(self) -> Iter<T> {
         Iter { node: self }
     }
 }
@@ -26,7 +25,7 @@ impl<'a, T> FromIterator<T> for Node<T> {
     }
 }
 
-struct Iter<T> {
+pub struct Iter<T> {
     node: Node<T>,
 }
 

@@ -1,21 +1,20 @@
-#![allow(unused)]
 type State = usize;
 
 #[derive(Debug, PartialEq, Clone)]
-enum Cell {
+pub enum Cell {
     Blank,
     Zero,
     One,
 }
 
 #[derive(Debug)]
-enum Move {
+pub enum Move {
     Stay,
     Left,
     Right,
 }
 
-struct Transition {
+pub struct Transition {
     start: State,
     end: State,
     read: Cell,
@@ -23,15 +22,15 @@ struct Transition {
     operation: Move,
 }
 
-struct Machine {
+pub struct Machine {
     initial: State,
     done: State,
     transitions: Vec<Transition>,
 }
 
-type Tape = Vec<Cell>;
+pub type Tape = Vec<Cell>;
 
-fn run(machine: Machine, code: Tape) -> Tape {
+pub fn run(machine: Machine, code: Tape) -> Tape {
     let mut position = 0;
     let mut state = machine.initial;
     let mut tape = code.to_vec();

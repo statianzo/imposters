@@ -1,9 +1,6 @@
 #![feature(test)]
 extern crate test;
 
-mod ch04_machinery;
-mod linked;
-mod linked_im;
-mod search;
-mod tree;
-mod vec_basic;
+pub mod ch04_machinery;
+pub mod ch05_bigo;
+pub mod ch06_datastructures;

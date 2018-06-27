@@ -1,5 +1,3 @@
-#![allow(unused)]
-
 #[derive(Debug, PartialEq, Copy, Clone)]
 enum State {
     Idle,
@@ -9,19 +7,19 @@ enum State {
     Done,
 }
 
-enum Event {
+pub enum Event {
     DigitPressed,
     StopPressed,
     StartPressed,
     TimerElapsed,
 }
 
-struct Microwave {
+pub struct Microwave {
     state: State,
 }
 
 impl Microwave {
-    fn dispatch(&mut self, event: Event) {
+    pub fn dispatch(&mut self, event: Event) {
         use self::Event::*;
         use self::State::*;
 
