@@ -1,3 +1,5 @@
+#![allow(unused)]
+
 #[derive(Debug, PartialEq, Copy, Clone)]
 enum State {
     Idle,

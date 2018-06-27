@@ -1,2 +1,1 @@
-pub mod fsm;
-pub mod turing;
+mod ch04_machinery;

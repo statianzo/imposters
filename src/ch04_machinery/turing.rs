@@ -1,3 +1,4 @@
+#![allow(unused)]
 type State = usize;
 
 #[derive(Debug, PartialEq, Clone)]
