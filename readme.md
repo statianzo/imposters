@@ -1,4 +1,4 @@
-# Imposter's Handbook
+# Imposter's Handbook [![Build Status](https://travis-ci.org/statianzo/imposters.svg?branch=master)](https://travis-ci.org/statianzo/imposters)
 Rust implementations for [Imposter's Handbook][1] topics. Follow along by listening to the [BookBytes podcast][2].
 
 ## Running the tests
