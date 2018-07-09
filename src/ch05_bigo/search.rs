@@ -1,7 +1,7 @@
 #![allow(unused)]
 #[allow(unused_imports)]
 extern crate test;
-use test::Bencher;
+use test::{black_box, Bencher};
 
 pub fn brute_force_search<T: PartialEq>(arr: &[T], el: T) -> bool {
     for i in 0..arr.len() {
@@ -25,6 +25,7 @@ pub fn binary_search<T: Ord>(arr: &[T], el: T) -> bool {
         };
     }
 }
+
 #[test]
 fn test_brute_force_miss() {
     let vec: Vec<usize> = (0..100).collect();
@@ -52,11 +53,11 @@ fn test_binary_hit() {
 #[bench]
 fn bench_brute_force(b: &mut test::Bencher) {
     let vec: Vec<usize> = (0..1000000).collect();
-    b.iter(|| brute_force_search(&vec, 900000));
+    b.iter(|| black_box(brute_force_search(&vec, 900000)));
 }
 
 #[bench]
 fn bench_binary_search(b: &mut test::Bencher) {
     let vec: Vec<usize> = (0..1000000).collect();
-    b.iter(|| binary_search(&vec, 900000));
+    b.iter(|| black_box(binary_search(&vec, 900000)));
 }
