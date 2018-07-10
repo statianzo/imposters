@@ -23,4 +23,14 @@ mod test {
         insertion_sort(&mut my_vec);
         assert_eq!(my_vec, vec![24, 42, 73, 100])
     }
+
+    quickcheck! {
+        fn test_any_sort(xs : Vec<u32>) -> bool {
+            let mut expected = xs.clone();
+            expected.sort();
+            let mut xs = xs;
+            insertion_sort(&mut xs);
+            xs == expected
+        }
+    }
 }

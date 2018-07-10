@@ -1,5 +1,11 @@
-#![feature(test)]
+#![cfg_attr(test, feature(test))]
+
+#[cfg(test)]
 extern crate test;
+
+#[cfg(test)]
+#[macro_use]
+extern crate quickcheck;
 
 pub mod ch04_machinery;
 pub mod ch05_bigo;

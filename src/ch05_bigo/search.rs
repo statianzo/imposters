@@ -1,7 +1,5 @@
 #![allow(unused)]
 #[allow(unused_imports)]
-extern crate test;
-use test::{black_box, Bencher};
 
 pub fn brute_force_search<T: PartialEq>(arr: &[T], el: T) -> bool {
     for i in 0..arr.len() {
@@ -26,38 +24,45 @@ pub fn binary_search<T: Ord>(arr: &[T], el: T) -> bool {
     }
 }
 
-#[test]
-fn test_brute_force_miss() {
-    let vec: Vec<usize> = (0..100).collect();
-    assert_eq!(brute_force_search(&vec, 101), false)
-}
+#[cfg(test)]
+mod test {
+    use super::*;
+    use test::{black_box, Bencher};
 
-#[test]
-fn test_brute_force_hit() {
-    let vec: Vec<usize> = (0..100).collect();
-    assert_eq!(brute_force_search(&vec, 42), true)
-}
+    #[test]
+    fn test_brute_force_miss() {
+        let vec: Vec<usize> = (0..100).collect();
+        assert_eq!(brute_force_search(&vec, 101), false)
+    }
 
-#[test]
-fn test_binary_miss() {
-    let vec: Vec<usize> = (0..100).collect();
-    assert_eq!(binary_search(&vec, 101), false)
-}
+    #[test]
+    fn test_brute_force_hit() {
+        let vec: Vec<usize> = (0..100).collect();
+        assert_eq!(brute_force_search(&vec, 42), true)
+    }
 
-#[test]
-fn test_binary_hit() {
-    let vec: Vec<usize> = (0..100).collect();
-    assert_eq!(binary_search(&vec, 42), true)
-}
+    #[test]
+    fn test_binary_miss() {
+        let vec: Vec<usize> = (0..100).collect();
+        assert_eq!(binary_search(&vec, 101), false)
+    }
 
-#[bench]
-fn bench_brute_force(b: &mut test::Bencher) {
-    let vec: Vec<usize> = (0..1000000).collect();
-    b.iter(|| black_box(brute_force_search(&vec, 900000)));
-}
+    #[test]
+    fn test_binary_hit() {
+        let vec: Vec<usize> = (0..100).collect();
+        assert_eq!(binary_search(&vec, 42), true)
+    }
 
-#[bench]
-fn bench_binary_search(b: &mut test::Bencher) {
-    let vec: Vec<usize> = (0..1000000).collect();
-    b.iter(|| black_box(binary_search(&vec, 900000)));
+    #[bench]
+    fn bench_brute_force(b: &mut test::Bencher) {
+        let vec: Vec<usize> = (0..1000000).collect();
+        b.iter(|| black_box(brute_force_search(&vec, 900000)));
+    }
+
+    #[bench]
+    fn bench_binary_search(b: &mut test::Bencher) {
+        let vec: Vec<usize> = (0..1000000).collect();
+        b.iter(|| black_box(binary_search(&vec, 900000)));
+    }
+
 }
