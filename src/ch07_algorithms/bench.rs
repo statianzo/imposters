@@ -3,7 +3,9 @@
 
 extern crate rand;
 use super::bubble;
+use super::heap;
 use super::insertion;
+use super::merge;
 use super::selection;
 use ch07_algorithms::bench::rand::Rng;
 
@@ -43,5 +45,41 @@ fn bench_insertion_sort(b: &mut Bencher) {
     b.iter(|| {
         let mut data_clone = data.clone();
         black_box(insertion::insertion_sort(&mut data_clone))
+    });
+}
+
+#[bench]
+fn bench_merge_sort(b: &mut Bencher) {
+    let data = generate_data();
+    b.iter(|| {
+        let mut data_clone = data.clone();
+        black_box(merge::merge_sort(&mut data_clone))
+    });
+}
+
+#[bench]
+fn bench_heap_sort(b: &mut Bencher) {
+    let data = generate_data();
+    b.iter(|| {
+        let mut data_clone = data.clone();
+        black_box(heap::heap_sort(&mut data_clone))
+    });
+}
+
+#[bench]
+fn bench_builtin_sort(b: &mut Bencher) {
+    let data = generate_data();
+    b.iter(|| {
+        let mut data_clone = data.clone();
+        black_box(data_clone.sort());
+    });
+}
+
+#[bench]
+fn bench_builtin_unstable_sort(b: &mut Bencher) {
+    let data = generate_data();
+    b.iter(|| {
+        let mut data_clone = data.clone();
+        black_box(data_clone.sort_unstable());
     });
 }
