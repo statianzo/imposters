@@ -29,8 +29,6 @@ fn get_token<R: Read>(input: &mut R) -> Token {
             .collect::<String>();
         id.push_str(&tail);
 
-        println!("{:?}", id);
-
         return match id.as_ref() {
             "def" => Token::Def,
             "extern" => Token::Extern,
