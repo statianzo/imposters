@@ -3,12 +3,22 @@ pub struct Fibonacci {
     after: u128,
 }
 
+pub fn reset(fib: &mut Fibonacci) {
+    fib.current = 0;
+    fib.after = 1;
+}
+
 impl Fibonacci {
     pub fn new() -> Self {
         Fibonacci {
             current: 0,
             after: 1,
         }
+    }
+
+    pub fn reset(&mut self) {
+        self.current = 0;
+        self.after = 1;
     }
 }
 
@@ -45,6 +55,21 @@ mod test {
         let mut fib = Fibonacci::new();
 
         assert_eq!(fib.nth(150), Some(9969216677189303386214405760200));
+    }
+
+    #[test]
+    fn test_iterator() {
+        let mut fib = Fibonacci::new();
+
+        let five: Vec<u128> = fib.take(5).collect();
+
+        assert_eq!(five, vec![0, 1, 1, 2, 3]);
+    }
+
+    #[test]
+    fn test_reset() {
+        let mut fib = Fibonacci::new();
+        reset(&mut fib);
     }
 
     #[test]
