@@ -7,15 +7,15 @@ pub struct Graph<'a> {
 }
 
 impl<'a> Graph<'a> {
-    fn new() -> Self {
+    pub fn new() -> Self {
         Graph { edges: vec![] }
     }
 
-    fn add_edge(&mut self, from: &'a str, to: &'a str, weight: u32) {
+    pub fn add_edge(&mut self, from: &'a str, to: &'a str, weight: u32) {
         self.edges.push(Edge(from, to, weight))
     }
 
-    fn paths_from(&self, from: &'a str) -> HashMap<&'a str, u32> {
+    pub fn paths_from(&self, from: &'a str) -> HashMap<&'a str, u32> {
         let mut paths: HashMap<&'a str, u32> = HashMap::new();
         for Edge(u, v, _) in &self.edges {
             paths.insert(u, u32::max_value());

@@ -1,10 +1,8 @@
-use std::io::Cursor;
-use std::io::Read;
 use std::iter::Peekable;
 use std::str::CharIndices;
 
 #[derive(Debug, PartialEq)]
-enum Token<'a> {
+pub enum Token<'a> {
     EOF,
     Def,
     Extern,
@@ -13,20 +11,20 @@ enum Token<'a> {
     Illegal,
 }
 
-struct Lexer<'a> {
+pub struct Lexer<'a> {
     buf: &'a str,
     buf_iter: Peekable<CharIndices<'a>>,
 }
 
 impl<'a> Lexer<'a> {
-    fn new(buf: &'a str) -> Self {
+    pub fn new(buf: &'a str) -> Self {
         Lexer {
             buf: &buf,
             buf_iter: buf.char_indices().peekable(),
         }
     }
 
-    fn read_identifier(&mut self, index: usize) -> Token<'a> {
+    pub fn read_identifier(&mut self, index: usize) -> Token<'a> {
         let rest = &self.buf[index..];
         match rest.split_whitespace().next() {
             Some("def") => {
@@ -68,7 +66,8 @@ impl<'a> Iterator for Lexer<'a> {
         match self.buf_iter.peek() {
             Some(&(i, x)) if x.is_alphabetic() => Some(self.read_identifier(i)),
             Some(&(i, x)) if x.is_numeric() => Some(self.read_number(i)),
-            _ => None,
+            Some(_) => Some(Token::EOF),
+            None => None,
         }
     }
 }

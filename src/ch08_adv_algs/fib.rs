@@ -59,7 +59,7 @@ mod test {
 
     #[test]
     fn test_iterator() {
-        let mut fib = Fibonacci::new();
+        let fib = Fibonacci::new();
 
         let five: Vec<u128> = fib.take(5).collect();
 

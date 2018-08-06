@@ -1,8 +1,7 @@
-use std::io::Cursor;
 use std::io::Read;
 
 #[derive(Debug, PartialEq)]
-enum Token {
+pub enum Token {
     EOF,
     Def,
     Extern,
@@ -10,7 +9,7 @@ enum Token {
     Number(f64),
 }
 
-fn get_token<R: Read>(input: &mut R) -> Token {
+pub fn get_token<R: Read>(input: &mut R) -> Token {
     let mut chars = input.bytes().map(|b| char::from(b.unwrap()));
 
     let last_result = chars.next();
@@ -54,6 +53,7 @@ fn get_token<R: Read>(input: &mut R) -> Token {
 #[cfg(test)]
 mod test {
     use super::*;
+    use std::io::Cursor;
 
     #[test]
     fn it_parses_def() {
