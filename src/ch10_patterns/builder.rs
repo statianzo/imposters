@@ -1,4 +1,9 @@
-struct StringBuilder<'a> {
+//! # Builder pattern
+//! This is bad. Just use String::push_str
+//! Same thing that String::collect and String::extend do
+//! https://doc.rust-lang.org/src/alloc/string.rs.html#1758-1764
+
+pub struct StringBuilder<'a> {
     segments: Vec<&'a str>,
 }
 
@@ -25,10 +30,6 @@ mod test {
 
     #[test]
     fn test_it_builds() {
-        // This is bad. Just use String::push_str
-        // Same thing that String::collect and String::extend do
-        // https://doc.rust-lang.org/src/alloc/string.rs.html#1758-1764
-
         let b = StringBuilder::new()
             .append("This ")
             .append("could be ")
