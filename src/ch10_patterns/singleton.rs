@@ -5,9 +5,9 @@
 use std::mem;
 use std::ptr;
 use std::sync::{Arc, Mutex, Once};
-use std::thread;
 static ONCE: Once = Once::new();
 
+#[allow(dead_code)]
 pub struct Solo {
     name: String,
     age: u8,
@@ -39,6 +39,7 @@ pub fn singleton() -> Arc<Mutex<Solo>> {
 #[cfg(test)]
 mod test {
     use super::*;
+    use std::thread;
 
     #[test]
     fn test_it_works() {

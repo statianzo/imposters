@@ -1,17 +1,18 @@
 //! # Factory
 //! Basically just a fn on an impl
-struct Customer {
+#[allow(dead_code)]
+pub struct Customer {
     name: String,
 }
 
 impl Customer {
-    fn new() -> Self {
+    pub fn new() -> Self {
         Customer {
             name: String::new(),
         }
     }
 
-    fn from_defaults() -> Self {
+    pub fn from_defaults() -> Self {
         Customer {
             name: String::from("Factory Worker"),
         }
